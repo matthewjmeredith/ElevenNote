@@ -36,6 +36,10 @@ namespace ElevenNote.Web.Controllers
             ViewBag.Message = "Meredith's Page.";
             return View();
         }
-
+        public ActionResult Notes()
+        {
+            ViewBag.Message = "Notes";
+            return View();
+        }
     }
 }

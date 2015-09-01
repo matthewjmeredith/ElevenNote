@@ -8,35 +8,36 @@
 </style>
 
 <h1>Meredith</h1>
-@{ 
-    List <string> fizzbuzz = new List<string>();
+@{
+    var fizzbuzz = new List<string>();
 }
 
-@{ 
+@{
     for (int i = 1; i <= 100; i++)
     {
         if (i % 15 == 0)
         {
-            fizzbuzz.Add(i.ToString());
+            fizzbuzz.Add("FizzBuzz");
         }
         else if (i % 5 == 0)
         {
-            fizzbuzz.Add(i.ToString());
+            fizzbuzz.Add("Buzz");
         }
         else if (i % 3 == 0)
         {
-            fizzbuzz.Add(i.ToString());
+            fizzbuzz.Add("Fizz");
         }
         else
         {
             fizzbuzz.Add(i.ToString());
         }
 
-
-        foreach (var in fizzbuzz){
+    }
+    <select>
+        @foreach (var item in fizzbuzz)
         {
+        <option value="@item">@item</option>
 
         }
-
-    }
-
+    </select>
+}
