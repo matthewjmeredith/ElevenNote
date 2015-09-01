@@ -1,0 +1,29 @@
+﻿<style>
+    h1 {
+        font-size: 28px;
+        color: red;
+        text-shadow: 2px 2px #cccccc;
+        text-decoration: underline;
+    }
+</style>
+
+<h1>Matt</h1>
+
+@{
+    var maxNumberOfDaysBeforeKilling = 365;
+    var showThis = true;
+}
+
+Number of Days to Kill Enemy:
+<select name="theOption">
+    @for (int i = 0; i <= maxNumberOfDaysBeforeKilling; i++)
+    {
+        <option value="@i">@i</option>
+    }
+</select>
+
+@if (showThis == true)
+{
+    <p>This is visible</p>
+}
+
