@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElevenNote.Web", "ElevenNote.Web\ElevenNote.Web.csproj", "{FA0CDDE8-30DB-4EAA-969B-D2F98E33561F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElevenNote.models", "ElevenNote.models\ElevenNote.models.csproj", "{9937C857-B7EB-42CB-9901-C1F4BDE7E25B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{70251351-FF59-48CF-BE55-CBB350431E04}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{FA0CDDE8-30DB-4EAA-969B-D2F98E33561F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA0CDDE8-30DB-4EAA-969B-D2F98E33561F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA0CDDE8-30DB-4EAA-969B-D2F98E33561F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9937C857-B7EB-42CB-9901-C1F4BDE7E25B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9937C857-B7EB-42CB-9901-C1F4BDE7E25B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9937C857-B7EB-42CB-9901-C1F4BDE7E25B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9937C857-B7EB-42CB-9901-C1F4BDE7E25B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70251351-FF59-48CF-BE55-CBB350431E04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70251351-FF59-48CF-BE55-CBB350431E04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70251351-FF59-48CF-BE55-CBB350431E04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70251351-FF59-48CF-BE55-CBB350431E04}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
