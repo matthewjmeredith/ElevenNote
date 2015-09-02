@@ -20,6 +20,7 @@ namespace ElevenNote.models.ViewModels
 
         public DateTime? DateModified { get; set; } // ? means nullable
 
+        [Display(Name = "Is Favorite")]
         public bool IsFavorite { get; set; }
 
     }

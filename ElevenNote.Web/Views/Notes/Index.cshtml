@@ -1,5 +1,8 @@
 ﻿@model IEnumerable<ElevenNote.models.ViewModels.NoteListViewModel>
-
+@if (ViewBag.Success != null)
+{
+    <p style="color: red">@ViewBag.Success</p>
+}
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>

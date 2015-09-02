@@ -4,44 +4,50 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using ElevenNote.models.ViewModel;
 
 namespace ElevenNote.Web.Controllers
 {
+    [Authorize]
     public class NotesController : Controller
     {
         // GET: Notes
         public ActionResult Index()
         {
-
-            var notes = new List<NoteListViewModel>();
-            notes.Add(new NoteListViewModel()
+            if (TempData["Result"] != null)
             {
-                Id = 0,
-                DateCreated = DateTime.UtcNow.AddMonths(-1),
-                DateModified = DateTime.UtcNow,
-                IsFavorite = true,
-                Title = "Title One"
-            });
+                ViewBag.Success = TempData["Result"];
+                TempData.Remove("Result");
+            }
+            var noteService = new ElevenNote.Services.NoteService();
+            var notes = noteService.GetAllForUser(Guid.Parse(User.Identity.GetUserId())); // must parse guid otherwise returns string.
+             return View(notes);
+        }
 
-            notes.Add(new NoteListViewModel()
+        [HttpGet]
+        [ActionName("Create")]
+
+        public ActionResult CreateGet()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ActionName("Create")]
+
+        public ActionResult CreatePost(NoteEditViewModel model)
+        {
+            if (ModelState.IsValid)
             {
-                Id = 1,
-                DateCreated = DateTime.UtcNow.AddMonths(-2),
-                DateModified = DateTime.UtcNow,
-                IsFavorite = false,
-                Title = "Title Two"
-            });
+                var noteService = new ElevenNote.Services.NoteService();
+                var userID = Guid.Parse(User.Identity.GetUserId());
+                var result = noteService.Create(model, userID);
+                TempData.Add("Result", result ? "Note Added." : "Note not added.");
 
-            notes.Add(new NoteListViewModel()
-            {
-                Id = 2,
-                DateCreated = DateTime.UtcNow.AddMonths(-3),
-                DateModified = DateTime.UtcNow,
-                IsFavorite = false,
-                Title = "Title Three"
-            });
-
-            return View(notes);
+                return RedirectToAction("Index");
+            }
+            return View(model);
         }
     }
 }
