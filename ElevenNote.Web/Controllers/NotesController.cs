@@ -22,7 +22,7 @@ namespace ElevenNote.Web.Controllers
             }
             var noteService = new ElevenNote.Services.NoteService();
             var notes = noteService.GetAllForUser(Guid.Parse(User.Identity.GetUserId())); // must parse guid otherwise returns string.
-             return View(notes);
+            return View(notes);
         }
 
         [HttpGet]
@@ -30,6 +30,7 @@ namespace ElevenNote.Web.Controllers
 
         public ActionResult CreateGet()
         {
+
             return View();
         }
 
@@ -42,12 +43,74 @@ namespace ElevenNote.Web.Controllers
             {
                 var noteService = new ElevenNote.Services.NoteService();
                 var userID = Guid.Parse(User.Identity.GetUserId());
-                var result = noteService.Create(model, userID);
+                var result = noteService.Update(model, userID);
                 TempData.Add("Result", result ? "Note Added." : "Note not added.");
 
                 return RedirectToAction("Index");
             }
             return View(model);
         }
+
+        [HttpGet]
+        [ActionName("Edit")]
+
+        public ActionResult EditGet(int id)
+        {
+            var noteService = new ElevenNote.Services.NoteService();
+            var userID = Guid.Parse(User.Identity.GetUserId());
+            var note = noteService.GetById(id, userID);
+            return View(note);
+        }
+
+        [HttpPost]
+        [ActionName("Edit")]
+
+        public ActionResult EditPost(NoteEditViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var noteService = new ElevenNote.Services.NoteService();
+                var userID = Guid.Parse(User.Identity.GetUserId());
+                var result = noteService.Update(model, userID);
+                TempData.Add("Result", result ? "Note updated." : "Note not updated.");
+
+                return RedirectToAction("Index");
+            }
+            return View(model);
+        }
+
+
+        public ActionResult Details(int id)
+        {
+            var noteService = new ElevenNote.Services.NoteService();
+            var userID = Guid.Parse(User.Identity.GetUserId());
+            var note = noteService.GetById(id, userID);
+            return View(note);
+        }
+
+        [HttpGet]
+        [ActionName("Delete")]
+
+        public ActionResult DeleteGet(int id)
+        {
+            var noteService = new ElevenNote.Services.NoteService();
+            var userID = Guid.Parse(User.Identity.GetUserId());
+            var note = noteService.GetById(id, userID);
+            return View(note);
+        }
+
+        [HttpPost]
+        [ActionName("Delete")]
+
+        public ActionResult DeletePost(int id)
+        {
+            var noteService = new ElevenNote.Services.NoteService();
+            var userID = Guid.Parse(User.Identity.GetUserId());
+            var result = noteService.Delete(id, userID);
+            TempData.Add("Result", result ? "Note deleted." : "Note not deleted.");
+
+            return RedirectToAction("Index");
+        }
+
     }
 }
