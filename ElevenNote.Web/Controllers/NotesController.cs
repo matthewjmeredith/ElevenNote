@@ -33,7 +33,7 @@ namespace ElevenNote.Web.Controllers
 
             return View();
         }
-
+        [ValidateInput(false)]
         [HttpPost]
         [ActionName("Create")]
 
@@ -43,7 +43,7 @@ namespace ElevenNote.Web.Controllers
             {
                 var noteService = new ElevenNote.Services.NoteService();
                 var userID = Guid.Parse(User.Identity.GetUserId());
-                var result = noteService.Update(model, userID);
+                var result = noteService.Create(model, userID);
                 TempData.Add("Result", result ? "Note Added." : "Note not added.");
 
                 return RedirectToAction("Index");
@@ -61,7 +61,7 @@ namespace ElevenNote.Web.Controllers
             var note = noteService.GetById(id, userID);
             return View(note);
         }
-
+        [ValidateInput(false)]
         [HttpPost]
         [ActionName("Edit")]
 
