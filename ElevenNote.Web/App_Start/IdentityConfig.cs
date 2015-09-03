@@ -53,7 +53,7 @@ namespace ElevenNote.Web
 
             // Configure validation logic for passwords
             var requiredLength = ConfigurationManager.AppSettings["PasswordConfig.RequiredLength"];
-            var requiredNonLetterOrDigit = ConfigurationManager.AppSettings["PasswordConfig.RequiredLetterOrDigit"];
+            var requiredNonLetterOrDigit = ConfigurationManager.AppSettings["PasswordConfig.RequireNonLetterOrDigit"];
             var requireDigit = ConfigurationManager.AppSettings["PasswordConfig.RequireDigit"];
             var requireLowercase = ConfigurationManager.AppSettings["PasswordConfig.RequireLowercase"];
             var requireUppercase = ConfigurationManager.AppSettings["PasswordConfig.RequireUppercase"];
